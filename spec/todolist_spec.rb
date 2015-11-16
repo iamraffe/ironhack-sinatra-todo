@@ -1,12 +1,12 @@
-require_relative "../lib/task.rb"
-require_relative "../lib/todolist.rb"
+require_relative "../models/task.rb"
+require_relative "../models/todolist.rb"
 require "spec_helper"
 
-describe "Task" do 
+describe "Task" do
 	before :each do
 		@task = Task.new("This is a task")
 		@to_do_list = TodoList.new("John")
-	end	
+	end
 
 	it "adds a task to the to do list upon add_task call" do
 		@to_do_list.add_task(@task)
@@ -17,7 +17,7 @@ describe "Task" do
 		@to_do_list.add_task(@task)
 		@to_do_list.delete_task(@task.id)
 	 	expect(@to_do_list.tasks.size).to eq(0)
-	end	  
+	end
 
 	it "should return the task if it exists" do
 		@to_do_list.add_task(@task)
@@ -26,7 +26,7 @@ describe "Task" do
 
 	it "should return a sorted list by the attribute created_at upon callin sort_by_created" do
 		array = []
-		3.times do |i| 
+		3.times do |i|
 			array[i]=Task.new("This is a task")
 			@to_do_list.add_task(array[i])
 			sleep(1)
@@ -36,7 +36,7 @@ describe "Task" do
 
 	it "should return a sorted list by the attribute created_at (DESC) upon callin sort_by_created" do
 		array = []
-		3.times do |i| 
+		3.times do |i|
 			array[i]=Task.new("This is a task")
 			@to_do_list.add_task(array[i])
 			sleep(1)

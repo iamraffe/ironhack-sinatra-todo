@@ -1,14 +1,14 @@
 require "pry"
 # require "yaml"
-# require "yaml/store" 
+require "yaml/store"
 
 class TodoList
   attr_reader :tasks
-  
-  def initialize(user)
-  	# @todo_store = YAML::Store.new "./public/tasks.yml"
+
+  def initialize(user, tasks = [])
+  	@todo_store = YAML::Store.new "./public/tasks.yml"
   	@user = user
-    @tasks = []
+    @tasks = tasks
   end
 
   def add_task(task)
@@ -29,15 +29,15 @@ class TodoList
   	key.upcase == 'ASC' ? tasks : tasks.reverse
   end
 
-  # def save
-	 #  @todo_store.transaction do 
-	 #      @todo_store[@user] = @tasks
-	 #  end
-  # end
+  def save
+    @todo_store.transaction do
+      @todo_store[@user] = @tasks
+    end
+  end
 
-  # def load
-	 #  @todo_store.transaction do 
-	 #      @todo_store[@user] = @tasks
-	 #  end
-  # end
+  def load_tasks
+    @todo_store.transaction do
+      @tasks=@todo_store[@user]
+    end
+  end
 end
