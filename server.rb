@@ -1,6 +1,7 @@
 require 'sinatra'
 require 'sinatra/reloader'
 require "pry"
+require 'json'
 # We're going to need to require our class files
 require_relative('./models/task.rb')
 require_relative('./models/todolist.rb')
@@ -35,8 +36,10 @@ end
 put '/task/:id' do
   task = todo_list.find_task_by_id(params[:id])
   task.complete!
+  todo_list.save.to_json
 end
 
 delete '/task/:id' do
   todo_list.delete_task(params[:id])
+  todo_list.save.to_json
 end

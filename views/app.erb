@@ -6,6 +6,8 @@
   <title>Tasks!</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://bootswatch.com/yeti/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/sweetalert.css">
+  <link rel="stylesheet" href="/css/custom.css">
 </head>
 <body>
   <nav class="navbar navbar-default">
@@ -23,33 +25,21 @@
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
           <li class="active"><a href="/task/create"><span class="fa fa-plus"></span>  Add New Task</a></li>
-<!--           <li><a href="#">Link</a></li> -->
         </ul>
       </div>
     </div>
   </nav>
   <%= yield %>
+  <div class="container">
+    <footer class="navbar-fixed-bottom">
+      <p class="text-center">Made with <span class="fa fa-heart text-danger"></span> for Ironhack</p>
+    </footer>  
+  </div>
+
   <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-  <script type="text/javascript">
-    $('.btn-success').on('click', function(e){
-      e.preventDefault();
-      $(this).parent().parent().addClass("success");
-      $.ajax{
-        method: 'PUT'
-        data: {id: $(this).attr('data-id')},
-        success: function(e){
-          alert("hello");
-          console.log(response)
-        },
-        error: function(e){
-          console.log(e)
-        }
-      }
-    });
-    $('.btn-danger').on('click', function(e){
-      e.preventDefault();
-      $(this).parent().parent().remove();
-    });
-  </script>
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
+  <script type="text/javascript" src="/js/sweetalert.min.js"></script>
+  <script type="text/javascript" src="/js/custom.js"></script>
 </body>
 </html>
